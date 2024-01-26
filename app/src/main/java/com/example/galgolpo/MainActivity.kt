@@ -14,6 +14,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.galgolpo.ui.theme.GalGolpoTheme
 
+sealed class DestinationPage(var route : String) {
+    object Signup : DestinationPage("signup")
+    object Login : DestinationPage("login")
+    object Profile : DestinationPage("profile")
+
+    object ChatList : DestinationPage("chatList")
+    object Conversation : DestinationPage("conversation/{chatId}") {
+        fun createRoute(id : String) = "conversation/$id"
+    }
+
+    object StatusList : DestinationPage("StatusList")
+    object SingleStatus : DestinationPage("singlestatus/{userId}") {
+        fun createRoute(userId : String) = "singlestatus/$userId"
+    }
+}
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
