@@ -1,4 +1,4 @@
-package com.example.galgolpo
+package com.example.galgolpo.Hilt_Setup
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

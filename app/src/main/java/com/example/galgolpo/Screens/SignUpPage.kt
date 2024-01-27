@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -25,6 +26,7 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -90,7 +92,8 @@ fun SignUpPage(navController: NavController, vm: GGViewModel) {
                     numberState.value = it
                 },
                 label = { Text(text = "Number") },
-                modifier = Modifier.padding(8.dp)
+                modifier = Modifier.padding(8.dp),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
             OutlinedTextField(
                 value = emailState.value,
@@ -108,7 +111,14 @@ fun SignUpPage(navController: NavController, vm: GGViewModel) {
                 label = { Text(text = "Password") },
                 modifier = Modifier.padding(8.dp)
             )
-            Button(onClick = { /*TODO*/ },
+            Button(onClick = {
+                             vm.signUp(
+                                 nameState.value.text,
+                                 numberState.value.text,
+                                 emailState.value.text,
+                                 passwordState.value.text,
+                             )
+            },
                 modifier = Modifier.padding(8.dp)
             ) {
                 Text(text = "SignUp")

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "517465293391",
+    "project_id": "gal-golpo",
+    "storage_bucket": "gal-golpo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517465293391:android:521a0442148b8812d4603a",
+        "android_client_info": {
+          "package_name": "com.example.galgolpo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ0C01KqcAYtZ82eHgahy3p1zuiNouTDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
