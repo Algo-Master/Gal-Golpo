@@ -13,18 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.galgolpo.GGViewModel
 
 @Composable
-fun ChatListPage() {
+fun ChatListPage(navController : NavController, vm : GGViewModel) {
     Text(
         text = "ChatList Page",
         color = Color.Cyan,
-//        modifier = Modifier.padding(20.dp)
     )
-}
-
-@Preview
-@Composable
-fun previewChatListPage() {
-    ChatListPage()
+    BottomNavigationBar(selectedItem = BottomNavigationItem.CHATLIST, navController = navController)
 }

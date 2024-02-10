@@ -19,7 +19,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.galgolpo.Screens.ChatListPage
 import com.example.galgolpo.Screens.LoginPage
+import com.example.galgolpo.Screens.ProfilePage
 import com.example.galgolpo.Screens.SignUpPage
+import com.example.galgolpo.Screens.StatusPage
 import com.example.galgolpo.ui.theme.GalGolpoTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -70,7 +72,13 @@ fun ChatAppNavigation() {
             LoginPage(navController, vm)
         }
         composable(DestinationPage.ChatList.route){
-            ChatListPage()
+            ChatListPage(navController, vm)
+        }
+        composable(DestinationPage.StatusList.route){
+            StatusPage(navController, vm)
+        }
+        composable(DestinationPage.Profile.route){
+            ProfilePage(navController, vm)
         }
     }
 }
