@@ -1,6 +1,8 @@
 package com.example.galgolpo
 
+import android.app.Activity
 import android.os.Bundle
+import android.view.Window
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,12 +10,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.galgolpo.Screens.ChatListPage
 import com.example.galgolpo.Screens.LoginPage
 import com.example.galgolpo.Screens.SignUpPage
 import com.example.galgolpo.ui.theme.GalGolpoTheme
@@ -64,6 +68,9 @@ fun ChatAppNavigation() {
         }
         composable(DestinationPage.Login.route) {
             LoginPage(navController, vm)
+        }
+        composable(DestinationPage.ChatList.route){
+            ChatListPage()
         }
     }
 }

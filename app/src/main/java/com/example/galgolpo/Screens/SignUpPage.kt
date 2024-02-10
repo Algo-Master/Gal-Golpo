@@ -12,6 +12,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -34,6 +35,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.galgolpo.CheckSignedIn
+import com.example.galgolpo.CommonProgressBar
 import com.example.galgolpo.DestinationPage
 import com.example.galgolpo.GGViewModel
 import com.example.galgolpo.R
@@ -42,6 +45,8 @@ import com.example.galgolpo.navigateTo
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpPage(navController: NavController, vm: GGViewModel) {
+
+    CheckSignedIn(vm = vm, navController = navController)
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column (
@@ -93,7 +98,7 @@ fun SignUpPage(navController: NavController, vm: GGViewModel) {
                 },
                 label = { Text(text = "Number") },
                 modifier = Modifier.padding(8.dp),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+//                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
             OutlinedTextField(
                 value = emailState.value,
@@ -126,19 +131,15 @@ fun SignUpPage(navController: NavController, vm: GGViewModel) {
 
             Text(text = "Already a user! Go to Login -->",
                 color = Color.Blue,
-                modifier = Modifier.padding(8.dp)
+                modifier = Modifier
+                    .padding(8.dp)
                     .clickable {
                         navigateTo(navController, DestinationPage.Login.route)
                     }
                 )
         }
     }
-}
-
-@Preview
-@Composable
-fun previewSignUpPage() {
-    val vim = hiltViewModel<GGViewModel>()
-    var nc = rememberNavController()
-    SignUpPage(navController = nc, vm = vim)
+    if(vm.inProgress.value){
+        CommonProgressBar()
+    }
 }
